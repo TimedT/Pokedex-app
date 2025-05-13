@@ -1,7 +1,7 @@
 @echo off
 
 if "%1" == "run" (
-    start cmd /k "cd frontend/vite-project && npm run dev && cd ..\.."
+    start cmd /k "cd frontend && npm run dev && cd ..\.."
 ) else if "%1" == "build" (
     call cd frontend\vite-project
     call npm run build

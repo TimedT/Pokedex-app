@@ -1,16 +1,22 @@
-
+import "../styles/main.css"
+import "../styles/home.css"
 
 function About() {
     let people = ["Pasang Shera"]
     if (people) {
         return (
-            <>
-                <h1>About</h1>
-                <ul className="list-group">
-                    {people.map((things) => (
-                        <li>{things}</li>
-                    ))}
+            <>  
+                <div className="container">
+                    <h1>About</h1>
+                    <ul className="list-group">
+                        {people.map((things) => (
+                            <li>{things}</li>
+                        ))}
+                    <br></br>
+                    <p></p>
                 </ul>
+                </div>
+                
             </>
         );
     } else {

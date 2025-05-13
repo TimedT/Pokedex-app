@@ -1,0 +1,84 @@
+.type-text {
+    margin: 10px 0;
+}
+
+.type-text a {
+    display: inline-block;
+    text-decoration: none;
+    margin: 0 5px;
+    padding: 3px 5px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.type-text a.type-normal {
+    background-color: #A8A77A;
+}
+
+.type-text a.type-fire {
+    background-color: #EE8130;
+}
+
+.type-text a.type-water {
+    background-color: #6390F0;
+}
+
+.type-text a.type-electric {
+    background-color: #F7D02C;
+}
+
+.type-text a.type-grass {
+    background-color: #7AC74C;
+}
+
+.type-text a.type-ice {
+    background-color: #96D9D6;
+}
+
+.type-text a.type-fighting {
+    background-color: #C22E28;
+}
+
+.type-text a.type-poison {
+    background-color: #A33EA1;
+}
+
+.type-text a.type-ground {
+    background-color: #E2BF65;
+}
+
+.type-text a.type-flying {
+    background-color: #A98FF3;
+}
+
+.type-text a.type-psychic {
+    background-color: #F95587;
+}
+
+.type-text a.type-bug {
+    background-color: #A6B91A;
+}
+
+.type-text a.type-rock {
+    background-color: #B6A136;
+}
+
+.type-text a.type-ghost {
+    background-color: #735797;
+}
+
+.type-text a.type-dragon {
+    background-color: #6F35FC;
+}
+
+.type-text a.type-dark {
+    background-color: #705746;
+}
+
+.type-text a.type-steel {
+    background-color: #B7B7CE;
+}
+
+.type-text a.type-fairy {
+    background-color: #D685AD;
+}

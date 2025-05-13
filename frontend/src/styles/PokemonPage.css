@@ -1,0 +1,86 @@
+/* Container Styles */
+
+.basic-info-container,
+.base-stats-container {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+    margin: 20px;
+    justify-items: left;
+    justify-self: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    size-adjust: flex;
+    display: block;
+}
+
+
+
+.basic-info-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+}
+
+/* List Styles */
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.no-bullets {
+    list-style-type: none;
+}
+
+/* Ability Styles */
+.ability {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.ability:hover {
+    text-decoration: underline;
+}
+
+/* Base Stats Styles */
+.stats {
+    max-width: 500px;
+    margin: 1rem auto;
+    text-align: left;
+    margin-left: 1px;
+}
+
+.stat-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    width: 80px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.stat-bar-container {
+    flex-grow: 1;
+    height: 16px;
+    background-color: #ddd;
+    border-radius: 8px;
+    margin: 0 0.5rem;
+    overflow: hidden;
+}
+
+.stat-bar-fill {
+    height: 100%;
+    background-color: #4caf50;
+    border-radius: 8px 0 0 8px;
+    transition: width 0.3s ease-in-out;
+}
+
+.stat-value {
+    width: 32px;
+    text-align: right;
+}

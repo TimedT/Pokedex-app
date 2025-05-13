@@ -20,5 +20,11 @@ def get_pokemon(name):
     return pokemon
 
 
+@app.route("/api/ability/<name>")
+def get_ability(name):
+    ability = api.get_ability(name)
+    return ability
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=1234)

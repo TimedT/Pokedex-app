@@ -2,17 +2,12 @@ import "../styles/main.css"
 import "../styles/home.css"
 
 function Home() {
-    let things = ["pokemon things", "mabye pokemon things"]
 
-    if (things) {
+    if (true) {
         return (
             <div className="container">
                 <h1>Pokedex</h1>
-                <ul className="list-group">
-                    {things.map((things) => (
-                        <li>{things}</li>
-                    ))}
-                </ul>
+                <div>Welcome</div>
                 <a href="/Pokemon/incineroar">Incineorar</a>
             </div>
         );

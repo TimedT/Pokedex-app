@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import "../../styles/PokemonPage.css"
 import "../../styles/Type.css"
 import "../../styles/Main.css"
-
+import formatName from "./NameFormatter";
 import BASE_URL from "../../config";
 
 
@@ -42,20 +42,20 @@ interface Pokemon {
 }
 
 const StatBar = ({ label, value }: { label: string; value: number }) => {
-    const max = 200; 
-  
+    const max = 200;
+
     return (
-      <div className="stat-row">
-        <span className="stat-label">{label}</span>
-        <span className="stat-value">{value}</span>
-        <div className="stat-bar-container">
-          <div
-            className="stat-bar-fill"
-            style={{ width: `${(value / max) * 100}%` }}
-          ></div>
+        <div className="stat-row">
+            <span className="stat-label">{label}</span>
+            <span className="stat-value">{value}</span>
+            <div className="stat-bar-container">
+                <div
+                    className="stat-bar-fill"
+                    style={{ width: `${(value / max) * 100}%` }}
+                ></div>
+            </div>
+
         </div>
-        
-      </div>
     );
 };
 
@@ -76,12 +76,12 @@ function PokemonPage() {
                     throw new Error("Failed to fetch");
                 }
                 const data = await response.json();
-                
+
                 setPokemon(data);
-                
+
                 setAbilities(data.abilities);
                 //setType(data.types);
-                
+
                 // converting stats
                 const stats: Stats = {
                     hp: data.stats.hp,
@@ -98,13 +98,10 @@ function PokemonPage() {
             }
         };
         fetchData();
-        
+
     }, []);
-    
-    // pokemon?.types.map((t) => {
-    //     console.log(t.name)
-    // })
-    
+
+
     if (pokemon == null) {
         return (
             <>
@@ -119,37 +116,37 @@ function PokemonPage() {
         return (
             <div className="container">
                 <div className="basic-info-container">
-                    <h1>{pokemon?.name}</h1>
+                    <h1>{formatName(pokemon.name)}</h1>
                     <ul className="type-text">Type:
-                        {pokemon?.types.map((t, index) => (
+                        {pokemon.types.map((t, index) => (
                             <a className={`type-${t.toLowerCase()}`} key={index} href={`/type/${t}`}>{`${t.toUpperCase()}`}</a>
                         ))}
                     </ul>
                     <div>
-                        <img src={`${pokemon?.image}`} />
+                        <img src={`${pokemon.image}`} />
                     </div>
                     <h4>Abilities:</h4>
                     {abilities.map((ability, index) => (
                         <li className="no-bullets" key={ability.id | index}>
                             {index + 1}. <a className="ability" href={`/ability/${ability.name}`} > {ability.name}</a>
-                            - {ability.effect} 
+                            - {ability.effect}
                             {ability.hidden && <strong> (Hidden ability)</strong>}
-                            
+
                         </li>
                     ))}
                     <br></br>
                     {stats && (
-                    <div className="stats">
-                        <StatBar label="HP" value={stats.hp} />
-                        <StatBar label="Attack" value={stats.attack} />
-                        <StatBar label="Defense" value={stats.defense} />
-                        <StatBar label="Sp. Atk" value={stats.specialAttack} />
-                        <StatBar label="Sp. Def" value={stats.specialDefense} />
-                        <StatBar label="Speed" value={stats.speed} />
-                    </div>
-                )}
+                        <div className="stats">
+                            <StatBar label="HP" value={stats.hp} />
+                            <StatBar label="Attack" value={stats.attack} />
+                            <StatBar label="Defense" value={stats.defense} />
+                            <StatBar label="Sp. Atk" value={stats.specialAttack} />
+                            <StatBar label="Sp. Def" value={stats.specialDefense} />
+                            <StatBar label="Speed" value={stats.speed} />
+                        </div>
+                    )}
                 </div>
-                
+
 
             </div>
         );

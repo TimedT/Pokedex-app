@@ -9,6 +9,7 @@ class API:
 
     def get_pokemon(self, name: str):
         try:
+            name = name.replace(" ", "-")
             response = httpx.get(self.BASE_URL + "/pokemon/" + name, timeout=10.0)
             response.raise_for_status()
             data = response.json()
@@ -24,10 +25,6 @@ class API:
                 ability_details.append(
                     self.get_abilities(ability_name, entry["is_hidden"])
                 )
-
-            # abilities = (
-            #     [self.get_abilities(t["ability"]["name"] for t in data["abilities"])],
-            # )
 
             pokemon = {
                 "name": data["name"].capitalize(),
@@ -97,6 +94,53 @@ class API:
             }
             # print(ability)
             return jsonify(ability)
+
+        except httpx.HTTPStatusError as e:
+            return jsonify({"error": "ability not found"}), 404
+        except httpx.RequestError as e:
+            return jsonify({"error": "Failed to fetch data"}), 500
+
+    # for Type page
+    def get_type(self, name: str):
+        try:
+            name = name.replace(" ", "-")
+            print(name)
+            response = httpx.get(self.BASE_URL + "/type/" + name, timeout=10.0)
+            response.raise_for_status()
+            data = response.json()
+
+            damage_relations = {
+                "double_damage_from": [
+                    k["name"] for k in data["damage_relations"]["double_damage_from"]
+                ],
+                "double_damage_to": [
+                    k["name"] for k in data["damage_relations"]["double_damage_to"]
+                ],
+                "half_damage_from": [
+                    k["name"] for k in data["damage_relations"]["half_damage_from"]
+                ],
+                "half_damage_to": [
+                    k["name"] for k in data["damage_relations"]["half_damage_to"]
+                ],
+                "no_damage_from": [
+                    k["name"] for k in data["damage_relations"]["no_damage_from"]
+                ],
+                "no_damage_to": [
+                    k["name"] for k in data["damage_relations"]["no_damage_to"]
+                ],
+            }
+
+            type = {
+                "name": data["name"],
+                "damage_relations": damage_relations,
+                "generation": data["generation"]["name"],
+                "moves": [t["name"] for t in data["moves"]],
+                "pokemon": [
+                    t["pokemon"]["name"].replace(" ", "-") for t in data["pokemon"]
+                ],
+            }
+            print(type)
+            return type
 
         except httpx.HTTPStatusError as e:
             return jsonify({"error": "ability not found"}), 404

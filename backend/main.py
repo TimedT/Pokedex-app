@@ -26,5 +26,11 @@ def get_ability(name):
     return ability
 
 
+@app.route("/api/type/<name>")
+def get_type(name):
+    type = api.get_type(name)
+    return type
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=1234)

@@ -97,7 +97,6 @@ function Type() {
                     );
                 })}
 
-
                 <div className="table">
                     <h2>{type.name} type Pokemon</h2>
                     <ul>
@@ -109,8 +108,6 @@ function Type() {
                         )}
                     </ul>
                 </div>
-
-
                 <div className="table">
                     <h2>{type.name} Moves</h2>
                     <ul>

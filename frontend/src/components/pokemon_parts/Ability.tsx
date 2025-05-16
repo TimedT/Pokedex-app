@@ -27,7 +27,6 @@ function Ability() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log("hello")
                 const response = await fetch(`${BASE_URL}/api/ability/${name}`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch");

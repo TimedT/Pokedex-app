@@ -1,0 +1,59 @@
+.move-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.move-table {
+    background-color: #c8f7c5;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    flex: 1 1 280px;
+
+    max-width: 280px;
+}
+
+.move-table h2 {
+    margin-bottom: 1rem;
+    color: #2a2a2a;
+    text-align: center;
+}
+
+.move-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.move-table th,
+.move-table td {
+    text-align: left;
+    padding: 0.5rem;
+    border-bottom: 1px solid #cceccc;
+}
+
+.move-table th {
+    background-color: #dfffe0;
+    width: 35%;
+}
+
+.move-effect {
+    flex: 2 1 500px;
+    padding: 1rem;
+    background-color: #fefefe;
+    justify-content: flex-end;
+
+}
+
+.move-effect h3 {
+    margin-top: 0;
+    color: #2a2a2a;
+}
+
+.move-effect p {
+    margin: 0;
+    line-height: 1.5;
+    color: #444;
+}

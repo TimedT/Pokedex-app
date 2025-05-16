@@ -32,5 +32,11 @@ def get_type(name):
     return type
 
 
+@app.route("/api/move/<name>")
+def get_move(name):
+    move = api.get_move(name)
+    return move
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=1234)

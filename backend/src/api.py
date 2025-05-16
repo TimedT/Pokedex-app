@@ -135,12 +135,38 @@ class API:
                 "damage_relations": damage_relations,
                 "generation": data["generation"]["name"],
                 "moves": [t["name"] for t in data["moves"]],
-                "pokemon": [
-                    t["pokemon"]["name"].replace(" ", "-") for t in data["pokemon"]
-                ],
+                "pokemon": [t["pokemon"]["name"] for t in data["pokemon"]],
             }
             print(type)
             return type
+
+        except httpx.HTTPStatusError as e:
+            return jsonify({"error": "ability not found"}), 404
+        except httpx.RequestError as e:
+            return jsonify({"error": "Failed to fetch data"}), 500
+
+    def get_move(self, name: str):
+        try:
+            name = name.replace(" ", "-")
+
+            response = httpx.get(self.BASE_URL + "/move/" + name, timeout=10.0)
+            response.raise_for_status()
+            data = response.json()
+            move = {
+                "name": data["name"],
+                "accuracy": data["accuracy"],
+                "effect": self.api_helper.get_full_effect(data["effect_entries"]),
+                "power": data["power"],
+                "pp": data["pp"],
+                "type": data["type"]["name"],
+                "priority": data["priority"],
+                "category": data["damage_class"]["name"],
+                "target": data["target"]["name"],
+                "pokemon": [t["name"] for t in data["learned_by_pokemon"]],
+            }
+
+            # print(move)
+            return jsonify(move)
 
         except httpx.HTTPStatusError as e:
             return jsonify({"error": "ability not found"}), 404

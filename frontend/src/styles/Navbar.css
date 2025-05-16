@@ -11,7 +11,7 @@
     font-family: 'Segoe UI', sans-serif;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     height: 60px;
-    width: 100vw;
+    width: 100%;
 }
 
 /* Logo */
@@ -63,4 +63,36 @@
         gap: 0.5rem;
         margin-top: 1rem;
     }
+}
+
+/* Search bar inside navbar */
+.search-bar {
+    display: flex;
+    margin-top: 0.5rem;
+    gap: 0;
+    height: 25px;
+}
+
+.search-bar input {
+    padding: 0.4rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px 0 0 8px;
+    outline: none;
+}
+
+.search-bar button {
+    padding: 0rem 1rem;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #ef5350;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.search-bar button:hover {
+    background-color: #ffe082;
+    color: #333;
 }

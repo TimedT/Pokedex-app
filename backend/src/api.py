@@ -146,6 +146,7 @@ class API:
             return jsonify({"error": "Failed to fetch data"}), 500
 
     def get_move(self, name: str):
+
         try:
             name = name.replace(" ", "-")
 
@@ -167,6 +168,21 @@ class API:
 
             # print(move)
             return jsonify(move)
+
+        except httpx.HTTPStatusError as e:
+            return jsonify({"error": "ability not found"}), 404
+        except httpx.RequestError as e:
+            return jsonify({"error": "Failed to fetch data"}), 500
+
+    def get_type_list(self):
+        try:
+            name = name.replace(" ", "-")
+            print(name)
+            response = httpx.get(self.BASE_URL + "/type/" + name, timeout=10.0)
+            response.raise_for_status()
+            data = response.json()
+
+            type_list = {}
 
         except httpx.HTTPStatusError as e:
             return jsonify({"error": "ability not found"}), 404

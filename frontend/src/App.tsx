@@ -2,7 +2,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Home from './components/Home'
-import About from './components/About'
+import About from './components/About/About'
 import PokemonPage from './components/pokemon_parts/PokemonPage'
 import Navbar from './components/Navbar';
 import Ability from './components/pokemon_parts/Ability';

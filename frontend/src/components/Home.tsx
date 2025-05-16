@@ -1,14 +1,22 @@
 import "../styles/main.css"
 import "../styles/home.css"
+import { useNavigate } from "react-router-dom";
+import RandomPokemon from "./pokemon_parts/RandomPokemon";
+
+
 
 function Home() {
+
 
     if (true) {
         return (
             <div className="container">
-                <h1>Pokedex</h1>
-                <div>Welcome</div>
-                <a href="/Pokemon/incineroar">Incineorar</a>
+                <h1>Welcome </h1>
+                <h3>Search for a pokemon or click something below</h3>
+                <div>
+                    <p>Can I offer you an <a href="/Pokemon/incineroar">Incineroar</a>?</p>
+                </div>
+                <RandomPokemon />
             </div>
         );
     } else {

@@ -1,0 +1,16 @@
+.random-pokemon-button {
+    padding: 0.6rem 1.2rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    max-width: fit-content;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.random-pokemon-button:hover {
+    background-color: #43a047;
+}

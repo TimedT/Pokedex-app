@@ -8,10 +8,32 @@ app = Flask(__name__)
 CORS(app)  # This enables CORS for all routes
 api = api.API()
 
+ABOUT_FILE_PATH = "frontend/public/about.txt"
 
-@app.route("/api/message")
-def get_message():
-    return jsonify({"message": "Hello from Flask + React + TypeScript!"})
+
+@app.route("/api/about", methods=["POST"])
+def save_about():
+    data = request.json
+    content = data.get("content", "")
+
+    try:
+        with open(ABOUT_FILE_PATH, "w", encoding="utf-8") as f:
+            f.write(content)
+        return jsonify({"message": "About text saved successfully"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/about", methods=["GET"])
+def get_about():
+    try:
+        with open(ABOUT_FILE_PATH, "r", encoding="utf-8") as f:
+            content = f.read()
+        return jsonify({"content": content}), 200
+    except FileNotFoundError:
+        return jsonify({"content": ""}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 @app.route("/api/pokemon/<name>")

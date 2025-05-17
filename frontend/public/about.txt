@@ -1,0 +1,42 @@
+Hello my name is Pasang Sherpa and This is an ongoing project of making a Pokemon website to provide information about Pokemon and Pokemon related information such as moves, abilities, and in the future, items. Because this is an ongoing project I'll be listing future plans/updates categorized by importance and urgency.
+
+------------------------Disclaimer?----------------------------
+I feel that I should mention this as it would be a bit disingenuous to not mention but I have worked on this before with a friend. I did frontend since I wanted to try learning react and he did the backend. We kind of just forgot about it after making the pokemon page and I had to remake the project because I didn't know how the backend worked. What I'm trying to get at here is that I used some of the backend(mainly a helper function) code my friend made for this project but most of it is mine here's a link to the github of the old project: https://github.com/esgameco/PokeDex
+
+
+------------------------UPDATES----------------------------
+nothing rn since I just got the about page ready
+
+-------------------------PLANS------------------------------
+IMMEDIATE:
+Types and Abilities list(important): the links on the navbar for list of types and abilities don't go anywhere since I haven't made the pages for them. it should be relatively quick.
+
+Pokemon's moves(important): I need to add the moves a pokemon can learn and which method they learn them.
+
+Pokemon page stuff(not important): I just want to add flavor text for the pokemon or something fill the page up more.
+
+Homepage(not important): fill up the homepage with more stuff and maybe add like a background wallpaper or something.
+
+LONG TERM PLANS:
+Database(Important): a lot of things I want to be able to do on this website pretty much requires me to have a database since the other option would be to make like hundreds of api calls to poke api every time I load a page
+
+Better text editer(not Important): This is mostly just my about being able to bold certain text or have different font sizes for this since it only really affects the about page right now it's not that important.
+
+CSS(not important): I want to improve the styling of some stuff in the pages like the lists though not really important.
+
+
+--------------------------FAQ--------------------------------
+This section is just so I can explain stuff about the project
+
+
+Q. Why is the About page editable?
+A. The main reason is so I can update it as I please since I also have my plans and updates though in the future when I move my updates to a new place I won't have the about page be editable.
+
+Q. What is PokeAPI?
+A. It's a RESTful Pokemon API that I use to get the information about Pokemon that I use in this website. It's free and very nice
+
+Q. What did I use to make this project?
+A. The frontend is React typescript and the backend is python Flask. The IDE I used was VS Code and Chatgpt also as like a learning tool / dictionary of sorts.
+
+Q. What did I use Chatgpt for?
+A. I mostly used it for when I needed to figure out how to do something and sometimes for help with small errors. The other thing I used it for was in styling pages. CSS is a nightmare when I'm trying to get things to come out a certain way and it doesn't work or I don't know how. The Pokemon stat bar was a great example as there is no way I would have figured out how do that in any reasonable amount of time.

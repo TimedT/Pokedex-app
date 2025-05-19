@@ -70,7 +70,6 @@ function PokemonPage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // const response = await fetch(`http://127.0.0.1:5000/api/pokemon/ditto`);
                 const response = await fetch(`${BASE_URL}/api/pokemon/${name}`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch");

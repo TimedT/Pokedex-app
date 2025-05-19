@@ -5,9 +5,7 @@ if "%1" == "run" (
 ) else if "%1" == "debug" (
     start cmd /k "python -m flask --debug --app .\backend\main run"
 ) else if "%1" == "install" (
-    call pip install flask[async]
-    call pip install httpx
-    call pip install flask-cors
+    call pip install -r backend/requirements.txt
 ) else (
     echo Invalid argument. Usage: %0 [run^|debug^|install]
 )

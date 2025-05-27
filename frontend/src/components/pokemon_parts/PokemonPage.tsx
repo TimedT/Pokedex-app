@@ -29,6 +29,16 @@ interface Stats {
     speed: number;
 }
 
+interface Move {
+    name: string;
+    level: number | null;
+}
+
+// methods = level-up || machine || egg
+interface Moves {
+    [method: string]: Move[];
+}
+
 interface Pokemon {
     name: string;
     abilities: Ability[];
@@ -38,7 +48,7 @@ interface Pokemon {
     height: number;
     weight: number;
     image: string;
-
+    moves: Moves
 }
 
 const StatBar = ({ label, value }: { label: string; value: number }) => {
@@ -112,8 +122,18 @@ function PokemonPage() {
                 <div className="error-message">Pokemon could not be found</div>
             </>);
     } else {
+        console.log(pokemon.moves);
+        pokemon.moves["level-up"].sort((a, b) => {
+            const levelA = a.level ?? 0;
+            const levelB = b.level ?? 0;
+            return levelA - levelB;
+        });
+
         return (
             <div className="container">
+                <div className="prev-next-extries">
+
+                </div>
                 <div className="basic-info-container">
                     <h1>{formatName(pokemon.name)}</h1>
                     <ul className="type-text">Type:
@@ -144,9 +164,65 @@ function PokemonPage() {
                             <StatBar label="Speed" value={stats.speed} />
                         </div>
                     )}
+
+
                 </div>
 
+                <div className="evolution-container">
 
+                </div>
+
+                <div className="move-table-container">
+                    <h2>Level Up Moves</h2>
+                    <table className="level-up-move-table">
+                        <thead>
+                            <tr>
+                                <th>Level</th>
+                                <th>Move Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {pokemon.moves["level-up"].map((p) =>
+                                <tr>
+                                    <td>{p.level}{!(p.level) && "Evolve"}</td>
+                                    <td><a href={`../move/${p.name}`}>{formatName(p.name)}</a></td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+
+                    <h2>TM Moves</h2>
+                    <table className="level-up-move-table">
+                        <thead>
+                            <tr>
+                                <th>Move Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {pokemon.moves["machine"].map((p) =>
+                                <tr>
+                                    <td><a href={`../move/${p.name}`}>{formatName(p.name)}</a></td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+
+                    <h2>Egg Moves</h2>
+                    <table className="level-up-move-table">
+                        <thead>
+                            <tr>
+                                <th>Move Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {pokemon.moves["egg"].map((p) =>
+                                <tr>
+                                    <td><a href={`../move/${p.name}`}>{formatName(p.name)}</a></td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         );
     }

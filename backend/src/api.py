@@ -1,6 +1,8 @@
 from flask import jsonify
 import httpx
 
+LATEST_VERSION_GROUP = "scarlet-violet"
+
 
 class API:
     def __init__(self):
@@ -34,6 +36,7 @@ class API:
                 "abilities": ability_details,
                 "image": data["sprites"]["other"]["official-artwork"]["front_default"],
                 "stats": stats,
+                "moves": self.sort_moves(data["moves"], LATEST_VERSION_GROUP),
             }
 
             return jsonify(pokemon)
@@ -60,6 +63,29 @@ class API:
             return jsonify({"error": "ability not found"}), 404
         except httpx.RequestError as e:
             return jsonify({"error": "Failed to fetch data"}), 500
+
+    # For get_pokemon
+    def sort_moves(self, moves: list, version_group: str):
+        groups = {"machine": [], "level": [], "egg": []}
+
+        for entry in moves:
+            move_name = entry["move"]["name"]
+
+            for version_detail in entry["version_group_details"]:
+                if version_detail["version_group"]["name"] != version_group:
+                    continue
+
+                method = version_detail["move_learn_method"]["name"]
+                level = version_detail["level_learned_at"]
+
+                move_data = {"name": move_name, "level": level if level > 0 else None}
+
+                if method not in groups:
+                    groups[method] = []
+                groups[method].append(move_data)
+
+                break
+        return groups
 
     # For Ability page
     def get_ability(self, name: str):
@@ -176,13 +202,26 @@ class API:
 
     def get_type_list(self):
         try:
-            name = name.replace(" ", "-")
-            print(name)
-            response = httpx.get(self.BASE_URL + "/type/" + name, timeout=10.0)
+            response = httpx.get(self.BASE_URL + "/type?limit=18", timeout=10.0)
             response.raise_for_status()
             data = response.json()
+            type_list = {"name": [t["name"] for t in data["results"]]}
+            print(type_list)
+            return type_list
 
-            type_list = {}
+        except httpx.HTTPStatusError as e:
+            return jsonify({"error": "ability not found"}), 404
+        except httpx.RequestError as e:
+            return jsonify({"error": "Failed to fetch data"}), 500
+
+    def get_ability_list(self):
+        try:
+            response = httpx.get(self.BASE_URL + "/ability?limit=1000", timeout=10.0)
+            response.raise_for_status()
+            data = response.json()
+            ability_list = {"name": [t["name"] for t in data["results"]]}
+            print(ability_list)
+            return ability_list
 
         except httpx.HTTPStatusError as e:
             return jsonify({"error": "ability not found"}), 404

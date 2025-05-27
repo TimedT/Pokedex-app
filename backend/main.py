@@ -60,5 +60,17 @@ def get_move(name):
     return move
 
 
+@app.route("/api/list/ability")
+def get_ability_list():
+    list = api.get_ability_list()
+    return list
+
+
+@app.route("/api/list/type")
+def get_type_list():
+    list = api.get_type_list()
+    return list
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=1234)

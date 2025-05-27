@@ -84,3 +84,36 @@ ul {
     width: 32px;
     text-align: right;
 }
+
+/* MOVES styles */
+.move-table-container {
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #fefefe;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.level-up-move-table {
+    width: auto;
+    min-width: 200px;
+    border-collapse: collapse;
+    font-size: 1rem;
+    justify-content: center;
+}
+
+.level-up-move-table th,
+.level-up-move-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.level-up-move-table th {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.level-up-move-table td {
+    color: #444;
+}

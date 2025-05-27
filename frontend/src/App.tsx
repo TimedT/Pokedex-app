@@ -8,6 +8,8 @@ import Navbar from './components/Navbar';
 import Ability from './components/pokemon_parts/Ability';
 import Type from './components/pokemon_parts/Type';
 import Move from './components/pokemon_parts/Move';
+import AbilityList from './components/lists/AbilityList';
+import TypeList from './components/lists/TypeList';
 
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
           <Route path='/ability/:name' element={<Ability />} />
           <Route path='/type/:name' element={<Type />} />
           <Route path='/move/:name' element={<Move />} />
+          <Route path='/abilities' element={<AbilityList />} />
+          <Route path='/types' element={<TypeList />} />
         </Routes>
       </div>
     </Router>
